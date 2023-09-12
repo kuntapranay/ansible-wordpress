@@ -1,0 +1,19 @@
+---
+- hosts: all
+  gather_facts: False  # Optional: If you don't need to gather facts about the hosts
+  become: yes  # Optional: If you need to run tasks with elevated privileges
+
+  tasks:
+    - name: Install Python 3
+      raw: test -e /usr/bin/python3 || (sudo apt -y update && sudo apt install -y python3)
+      remote_user: ubuntu
+      become_user: root
+
+    - name: Include roles
+      include_role:
+        name: "{{ item }}"
+      loop:
+        - server
+        - php
+        - mysql
+        - wordpress

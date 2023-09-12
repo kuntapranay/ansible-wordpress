@@ -1,0 +1,6 @@
+---
+# vars file for wordpress
+vars:
+  wp_mysql_db: mywordpressdb
+  wp_mysql_user: mywordpressuser
+  wp_mysql_password: mysecretpassword
